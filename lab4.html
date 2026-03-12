@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Lab 4 - Fruit Store</title>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+<style>
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+#order-result {
+  display: none;
+}
+
+.fruit-card {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.fruit-emoji {
+  font-size: 2.5rem;
+}
+
+.result-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #198754;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Lab 4 - Fruit Store</h1>
+
+  <p class="text-center">Fresh Fruits Delivered To Your Door</p>
+
+  <hr>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-nav">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="lab3.html">Lab 3</a>
+      <a class="nav-link active" href="lab4.html">Lab 4</a>
+    </div>
+  </nav>
+
+  <hr>
+
+  <h2>Our Fruits</h2>
+
+  <p>We carry a fresh selection of fruits available for delivery. Place your order below!</p>
+
+  <div class="row text-center mb-4">
+    <div class="col-md-2 col-4 mb-3">
+      <div class="fruit-card">
+        <div class="fruit-emoji">🍎</div>
+        <div>Apples</div>
+      </div>
+    </div>
+    <div class="col-md-2 col-4 mb-3">
+      <div class="fruit-card">
+        <div class="fruit-emoji">🍌</div>
+        <div>Bananas</div>
+      </div>
+    </div>
+    <div class="col-md-2 col-4 mb-3">
+      <div class="fruit-card">
+        <div class="fruit-emoji">🍓</div>
+        <div>Strawberries</div>
+      </div>
+    </div>
+    <div class="col-md-2 col-4 mb-3">
+      <div class="fruit-card">
+        <div class="fruit-emoji">🍇</div>
+        <div>Grapes</div>
+      </div>
+    </div>
+    <div class="col-md-2 col-4 mb-3">
+      <div class="fruit-card">
+        <div class="fruit-emoji">🍊</div>
+        <div>Oranges</div>
+      </div>
+    </div>
+    <div class="col-md-2 col-4 mb-3">
+      <div class="fruit-card">
+        <div class="fruit-emoji">🍍</div>
+        <div>Pineapples</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Place Your Order</h2>
+
+  <p>Click the button below to get started. You will be asked for your name, the fruit you want, and how many (max 10 per order).</p>
+
+  <button class="btn btn-success" onclick="startOrder()">Start Order</button>
+
+  <hr>
+
+  <!-- Order Result Section -->
+  <div id="order-result">
+
+    <h2>Your Order Summary</h2>
+
+    <div class="result-box">
+      <p id="greeting-msg" class="fs-5 fw-semibold"></p>
+
+      <table class="table table-bordered mt-3">
+        <tbody>
+          <tr>
+            <th scope="row">Item Ordered</th>
+            <td id="item-display"></td>
+          </tr>
+          <tr>
+            <th scope="row">Quantity</th>
+            <td id="qty-display"></td>
+          </tr>
+          <tr>
+            <th scope="row">Order Placed</th>
+            <td id="order-date-display"></td>
+          </tr>
+          <tr>
+            <th scope="row">Expected Arrival</th>
+            <td id="arrival-display"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="text-muted mb-0">Thank you for shopping with us! 🛒</p>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <p>March 12, 2026 – John Scalici</p>
+
+</div>
+
+<script>
+
+  // Approved fruits — maps both singular and plural inputs to the display name
+  const fruitMap = {
+    "apple": "Apples",       "apples": "Apples",
+    "banana": "Bananas",     "bananas": "Bananas",
+    "strawberry": "Strawberries", "strawberries": "Strawberries",
+    "grape": "Grapes",       "grapes": "Grapes",
+    "orange": "Oranges",     "oranges": "Oranges",
+    "pineapple": "Pineapples","pineapples": "Pineapples"
+  };
+
+  // Welcome alert fires on page load
+  window.onload = function () {
+    alert("Welcome to John's Fruit Store! We're glad you're here. Click OK to browse our selection.");
+  };
+
+  function getTimeGreeting() {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) return "Good Morning";
+    if (hour >= 12 && hour < 17) return "Good Afternoon";
+    if (hour >= 17 && hour < 21) return "Good Evening";
+    return "Good Night";
+  }
+
+  function startOrder() {
+
+    // --- Name ---
+    let name = prompt("What is your name?");
+    if (name === null) return; // user hit Cancel
+    if (name.trim() === "") {
+      alert("No name entered. Please try again.");
+      return;
+    }
+    name = name.trim();
+
+    // --- Item ---
+    let itemInput = prompt("What fruit would you like to order?\n\nWe sell:\n• Apples\n• Bananas\n• Strawberries\n• Grapes\n• Oranges\n• Pineapples");
+    if (itemInput === null) return; // user hit Cancel
+    if (itemInput.trim() === "") {
+      alert("No item entered. Please try again.");
+      return;
+    }
+
+    const itemLower = itemInput.trim().toLowerCase();
+
+    // Check if item is in our approved list (singular or plural)
+    if (!fruitMap[itemLower]) {
+      alert("Sorry, we don't carry \"" + itemInput.trim() + "\".\n\nWe only sell: Apples, Bananas, Strawberries, Grapes, Oranges, and Pineapples.\n\nPlease place a new order and choose from our available fruits.");
+      return;
+    }
+
+    const item = fruitMap[itemLower];
+
+    // --- Quantity ---
+    let qtyInput = prompt("How many " + item + " would you like?\n(Enter a whole number between 1 and 10)");
+    if (qtyInput === null) return; // user hit Cancel
+
+    const qty = Number(qtyInput);
+
+    // Must be a whole number between 1 and 10
+    if (!Number.isInteger(qty) || qty < 1 || qty > 10) {
+      alert("Invalid quantity: \"" + qtyInput + "\"\n\nPlease enter a whole number between 1 and 10.\n(No negatives, decimals, or values over 10)");
+      return;
+    }
+
+    // --- Calculate Dates ---
+    const orderDate = new Date();
+    const arrivalDate = new Date();
+    arrivalDate.setDate(orderDate.getDate() + 7);
+
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const orderDateStr = orderDate.toLocaleDateString('en-US', dateOptions);
+    const arrivalDateStr = arrivalDate.toLocaleDateString('en-US', dateOptions);
+
+    // --- Display Results ---
+    const greeting = getTimeGreeting();
+    document.getElementById("greeting-msg").textContent =
+      `${greeting}, ${name}! Thank you for ordering!`;
+
+    document.getElementById("item-display").textContent = item;
+    document.getElementById("qty-display").textContent = qty;
+    document.getElementById("order-date-display").textContent = orderDateStr;
+    document.getElementById("arrival-display").textContent = arrivalDateStr;
+
+    document.getElementById("order-result").style.display = "block";
+    document.getElementById("order-result").scrollIntoView({ behavior: 'smooth' });
+  }
+
+</script>
+
+</body>
+
+</html>
