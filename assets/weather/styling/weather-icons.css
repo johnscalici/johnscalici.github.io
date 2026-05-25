@@ -163,53 +163,6 @@ body a {
   stroke-width: 14px;
 }
 
-.time-icon-slot {
-  width: 65px;
-  height: 65px;
-  border: 8px solid #ffa200a6;
-  border-radius: 50px;
-  position: relative;
-  transform: scale(0.50);
-}
-.time-icon-slot span {
-  display: block;
-  background: #f48a00;
-}
-.time-icon-slot .hour,
-.time-icon-slot .min {
-  width: 6px;
-  height: 22px;
-  border-radius: 50px;
-  position: absolute;
-  top: 24.5px;
-  left: 21px;
-  animation: load9243 1.2s linear infinite;
-  transform-origin: top center;
-}
-.time-icon-slot .min {
-  height: 17px;
-  animation: load9243 4s linear infinite;
-}
-.time-icon-slot .circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50px;
-  position: absolute;
-  top: 19px;
-  left: 19px;
-  background: #ff8400;
-  
-}
-
-
-
-
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
 @keyframes flyby {
   0% {
     -webkit-transform: translate(0px, 0px);

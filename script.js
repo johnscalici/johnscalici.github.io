@@ -52,9 +52,15 @@ typeLoop();
 
 
 function updateResults() {
-  fetch("https://api.jolpi.ca/ergast/f1/2026/4/results/?format=json")
-    .then(response => response.json())
-    .then(data => {
+  fetch("https://api.jolpi.ca/ergast/f1/2026/5/results/?format=json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Race Results API failed")
+      }
+
+      return response.json();
+    })
+    .then((data) => {
       const driverOrder = data.MRData.RaceTable.Races[0].Results
         .sort((a, b) => Number(a.positionOrder) - Number(b.positionOrder))
         .map(result => {
@@ -76,7 +82,12 @@ function updateResults() {
         row.innerHTML = `<span>${driver}</span>`;
         resultsList.appendChild(row);
     });
-  });
+  
+  })
+  .catch((error) => {
+      console.error(error);
+      alert("The race results API is currently unavailable.");
+   });
 }
 
 updateResults();
@@ -84,8 +95,15 @@ updateResults();
 
 function dcResults() {
   fetch("https://api.jolpi.ca/ergast/f1/2026/driverstandings/?format=json")
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Race Results API failed")
+      }
+
+      return response.json();
+    })
+
+      .then((data) => {
       const standings = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
       const driverLeaderboard = standings.map(driver => {
       let driverName = `${driver.Driver.givenName} ${driver.Driver.familyName}`;
@@ -113,10 +131,14 @@ function dcResults() {
         `;
 
         rcResults.appendChild(row)
-
-
-    }); 
- })
+      });
+    
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("The driver standings leaderboard API is currently unavailable.");
+    });
 }
+
 dcResults();
 

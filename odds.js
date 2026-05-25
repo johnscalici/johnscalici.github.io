@@ -395,12 +395,28 @@ async function updatePolymarketOdds() {
   }
 }
 
+let currentSource = "polymarket";
+
 if (kalshiBtn) {
-  kalshiBtn.addEventListener("click", updateOdds);
+  kalshiBtn.addEventListener("click", function () {
+    currentSource = "kalshi";
+    updateOdds();
+  });
 }
 
 if (polymarketBtn) {
-  polymarketBtn.addEventListener("click", updatePolymarketOdds);
+  polymarketBtn.addEventListener("click", function () {
+    currentSource = "polymarket";
+    updatePolymarketOdds();
+  });
 }
 
-updateOdds();
+updatePolymarketOdds();
+
+setInterval(function () {
+  if (currentSource === "kalshi") {
+    updateOdds();
+  } else {
+    updatePolymarketOdds();
+  }
+}, 10000);

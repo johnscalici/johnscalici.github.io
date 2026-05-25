@@ -264,6 +264,9 @@ transform: translateY(3px) scale(0.97);
     grid-template-columns: 420px 1fr;
     align-items: center;
     gap: 32px;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(225, 6, 0, 0.45) transparent;
     
 }
 
@@ -488,6 +491,7 @@ transform: translateY(3px) scale(0.97);
   background: rgba(225, 6, 0, 0.85);
 }
 
+
 .info-box::-webkit-scrollbar-button {
   display: none;
   width: 0;
@@ -506,6 +510,7 @@ transform: translateY(3px) scale(0.97);
   width: 0;
   height: 0;
 }
+
 
 
 

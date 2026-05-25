@@ -83,8 +83,7 @@
 
 
 
-
-  const weatherURL = "https://archive-api.open-meteo.com/v1/archive?latitude=25.95806&longitude=-80.23889&start_date=2026-05-03&end_date=2026-05-03&hourly=temperature_2m,precipitation,wind_speed_10m,wind_direction_10m,weather_code&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York";
+ /* const weatherURL = "https://archive-api.open-meteo.com/v1/archive?latitude=25.95806&longitude=-80.23889&start_date=2026-05-03&end_date=2026-05-03&hourly=temperature_2m,precipitation,wind_speed_10m,wind_direction_10m,weather_code&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York";
 
   fetch(weatherURL)
   .then(response => response.json())
@@ -113,4 +112,36 @@
     document.querySelector(".weather-icon-slot").innerHTML = svg;
     });
 
+  });
+
+*/
+
+// Canadian GP — Circuit Gilles-Villeneuve
+// Source - Honda Racing’s 2026 Canadian GP race report
+
+document.querySelector(".weather-temp").textContent = "54°F";
+document.querySelector(".weather-condition").textContent = "Light Rain";
+document.querySelector(".weather-wind").textContent = "Track 63°F";
+document.querySelector(".weather-rain").textContent = "Damp";
+document.querySelector(".weather-time-value").textContent = "4:00 PM";
+
+
+fetch("assets/weather/icons/rainy.svg")
+  .then(response => response.text())
+  .then(svg => {
+    document.querySelector(".weather-icon-slot").innerHTML = svg;
+  });
+
+
+fetch("assets/weather/icons/windy.svg")
+  .then(response => response.text())
+  .then(svg => {
+    document.querySelector(".windy-icon-slot").innerHTML = svg;
+  });
+
+
+fetch("assets/weather/icons/rain_drops.svg")
+  .then(response => response.text())
+  .then(svg => {
+    document.querySelector(".rain-icon-slot").innerHTML = svg;
   });

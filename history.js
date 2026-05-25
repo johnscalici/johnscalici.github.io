@@ -150,10 +150,41 @@ document.querySelector("#loadSeasonBtn").addEventListener("click", function () {
   
   
   Promise.all([
-    fetch(`https://api.jolpi.ca/ergast/f1/${season}/driverstandings/`).then(res => res.json()),
-    fetch(`https://api.jolpi.ca/ergast/f1/${season}/constructorstandings/`).then(res => res.json()),
-    fetch(`https://api.jolpi.ca/ergast/f1/${season}/races/`).then(res => res.json()),
-    fetch(`https://api.jolpi.ca/ergast/f1/${season}/results/1/`).then(res => res.json())
+  fetch(`https://api.jolpi.ca/ergast/f1/${season}/driverstandings/`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Driver standings API failed");
+      }
+
+      return res.json();
+    }),
+
+  fetch(`https://api.jolpi.ca/ergast/f1/${season}/constructorstandings/`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Constructor standings API failed");
+      }
+
+      return res.json();
+    }),
+
+  fetch(`https://api.jolpi.ca/ergast/f1/${season}/races/`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Race schedule API failed");
+      }
+
+      return res.json();
+    }),
+
+  fetch(`https://api.jolpi.ca/ergast/f1/${season}/results/1/`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Race results API failed");
+      }
+
+      return res.json();
+    })
   ])
   .then(([driverData, constructorData, raceData, resultsData]) => {
     const champion =
@@ -300,7 +331,10 @@ document.querySelector("#loadSeasonBtn").addEventListener("click", function () {
       `${year}  RACE RESULTS`;
 
 
-  
+  })
+  .catch((error) => {
+  console.error(error);
+  alert("The F1 season data API is currently unavailable. Showing the default season data instead.");
   });
 });
 

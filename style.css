@@ -176,7 +176,7 @@ body,
   position: absolute;
   inset: 0;
   z-index: 0;
-  --c: rgba(255, 77, 184, 0.25);
+  --c: rgba(253, 0, 34, 0.25);
   background-color: #000;
   background-image:
     radial-gradient(4px 100px at 0px 235px, var(--c), #0000),
@@ -392,20 +392,20 @@ body,
   min-height: 450px;
   background: linear-gradient(
     160deg,
-    rgba(0, 108, 122, 0.82),
-    rgba(0, 62, 72, 0.88)
+    rgba(241, 8, 0, 0.82),
+    rgba(171, 191, 194, 0.88)
   );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 8px;
-  border: 1px solid rgba(0, 234, 255, 1);
+  border: 1px solid rgb(255, 255, 255);
   box-shadow:
-    0 0 12px rgba(255, 77, 184, 0.40),
-    0 0 28px rgba(255, 77, 184, 0.25),
-    0 0 42px rgba(0, 234, 255, 0.18),
+    0 0 12px rgba(248, 3, 36, 0.4),
+    0 0 28px rgba(255, 9, 9, 0.25),
+    0 0 42px rgba(255, 38, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.42),
     inset 0 -1px 0 rgba(255, 255, 255, 0.10),
-    inset 0 1px 8px rgba(0, 234, 255, 0.15);
+    inset 0 1px 8px rgba(255, 38, 0, 0.15);
   position: relative;
   overflow: hidden;
   padding: 18px 16px;
@@ -471,7 +471,7 @@ body,
   padding: 12px 0;
   font-size: 1rem;
   font-weight: 600;
-  border-bottom: 1px solid rgba(255, 3, 226, 0.708);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.708);
 }
 
 .left-results-row:last-child {
@@ -494,17 +494,17 @@ body,
   min-height: 450px;
   background: linear-gradient(
     160deg,
-    rgba(0, 108, 122, 0.82),
-    rgba(0, 62, 72, 0.88)
+    rgba(241, 8, 0, 0.82),
+    rgba(171, 191, 194, 0.88)
   );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 8px;
-  border: 1px solid rgba(0, 234, 255, 1);
+  border: 1px solid rgb(255, 255, 255);
   box-shadow:
-    0 0 12px rgba(255, 77, 184, 0.40),
-    0 0 28px rgba(255, 77, 184, 0.25),
-    0 0 42px rgba(0, 234, 255, 0.18),
+    0 0 12px rgba(248, 3, 36, 0.4),
+    0 0 28px rgba(255, 9, 9, 0.25),
+    0 0 42px rgba(255, 38, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.42),
     inset 0 -1px 0 rgba(255, 255, 255, 0.10),
     inset 0 1px 8px rgba(0, 234, 255, 0.15);
@@ -573,7 +573,7 @@ body,
   padding: 12px 0;
   font-size: 1rem;
   font-weight: 600;
-  border-bottom: 1px solid rgba(255, 3, 226, 0.708);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.708);
 }
 
 .right-results-row:last-child {
@@ -598,10 +598,10 @@ body,
   max-width: 680px;
   min-height: 54px;
   border-radius: 10px;
-  background-color: rgba(245, 73, 144);
+  background-color: rgb(245, 73, 73);
   box-shadow:
     rgba(0, 0, 0, 0.35) 0px 5px 15px,
-    rgba(245, 73, 144, 0.5) 5px 10px 15px;
+    rgba(245, 73, 73, 0.5) 5px 10px 15px;
   z-index: 3;
   align-items: center;
   justify-content: stretch;
@@ -690,42 +690,17 @@ body,
   width: 30px;
   height: 30px;
   flex: 0 0 30px;
-  border: 4px solid #ffa200a6;
-  border-radius: 50%;
-  position: relative;
-  transform: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.time-icon-slot span {
+.time-icon-slot img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
   display: block;
-  background: #f48a00;
-}
-
-.time-icon-slot .hour,
-.time-icon-slot .min {
-  width: 3px;
-  height: 10px;
-  border-radius: 50px;
-  position: absolute;
-  top: 14px;
-  left: 11px;
-  animation: load9243 1.2s linear infinite;
-  transform-origin: top center;
-}
-
-.time-icon-slot .min {
-  height: 8px;
-  animation: load9243 4s linear infinite;
-}
-
-.time-icon-slot .circle {
-  width: 6px;
-  height: 6px;
-  border-radius: 50px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #ff8400;
 }
 
 @keyframes hi {
@@ -1071,7 +1046,8 @@ body,
 
   .weather-icon-slot svg,
   .windy-icon-slot svg,
-  .rain-icon-slot svg {
+  .rain-icon-slot svg,
+  .time-icon-slot img {
     width: 28px;
     height: 28px;
   }
@@ -1177,28 +1153,6 @@ body,
     height: 24px;
   }
 
-  .time-icon-slot {
-    border-width: 3px;
-  }
-
-  .time-icon-slot .hour,
-  .time-icon-slot .min {
-    width: 3px;
-    height: 8px;
-    top: 12px;
-    left: 9px;
-  }
-
-  .time-icon-slot .min {
-    height: 6px;
-  }
-
-  .time-icon-slot .circle {
-    width: 5px;
-    height: 5px;
-    top: 8px;
-    left: 8px;
-  }
 }
 
 @media (max-width: 360px) {
